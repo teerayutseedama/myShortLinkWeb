@@ -61,9 +61,15 @@ export class AppComponent implements Page, OnDestroy, OnInit {
     });
   }
   async linkFormSubmit() {
+    let url = '';
     if (this.isValidUrl(this.linkForm.value.url)) {
+      if (!this.isValidHttpUrl(this.linkForm.value.url)) {
+        url = 'https://' + this.linkForm.value.url;
+      } else {
+        url = this.linkForm.value.url;
+      }
       const input: ISaveLinkInput = {
-        url: this.linkForm.value.url,
+        url: url,
         newUrl: location.href,
       };
       await this._linkDataService.saveLink(input);
@@ -87,14 +93,27 @@ export class AppComponent implements Page, OnDestroy, OnInit {
     );
     return !!urlPattern.test(urlString);
   };
-
+  isValidHttpUrl(urlString: string) {
+    let url;
+    try {
+      url = new URL(urlString);
+    } catch (_) {
+      return false;
+    }
+    return url.protocol === 'http:' || url.protocol === 'https:';
+  }
+  isValidHttp = (urlString: string) => {
+    var urlPattern = new RegExp('^(https:\\/\\/)?', 'i');
+    return !!urlPattern.test(urlString);
+  };
   redirectTo() {
     const path = location.pathname.replace('/', '');
 
     if (path != '') {
       const input: IUpdateVisitorGetLinkInput = { short: path };
       this._linkDataService.updateVisitor(input).then((res) => {
-        location.href = this._linkData.url;
+        window.open(this._linkData.url, '_blank');
+        console.log('this._linkData.url', this._linkData.url);
       });
     }
   }
