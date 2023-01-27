@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://localhost:3000',
+  api: 'https://my-short-link-filmu5atz-teerayutseedama.vercel.app',
 };
 
 /*

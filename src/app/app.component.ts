@@ -98,4 +98,11 @@ export class AppComponent implements Page, OnDestroy, OnInit {
       });
     }
   }
+
+  copy() {
+    navigator.clipboard.writeText(this._newLinkData.newUrl);
+  }
+  go() {
+    window.open(this._newLinkData.newUrl, '_blank');
+  }
 }

@@ -34,7 +34,13 @@
             <button  type="submit" class="btn btn-outline-primary mt-3">Shorten URL</button>
             <div *ngIf="_newLinkData">
               <h3>New URL</h3>
-              <input type="text" class="form-control" [value]="_newLinkData.newUrl" placeholder="newUrl">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text btn btn-success" (click)="copy()" style="cursor: copy;" id="basic-addon1" >Copy</span>
+                </div>
+                <input type="text" class="form-control" [value]="_newLinkData?.newUrl" placeholder="newUrl" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              <button (click)="go()"  type="button" class="btn btn-outline-primary mt-3">Go !</button>
             </div>
 
           </form>
