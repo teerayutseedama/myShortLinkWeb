@@ -11,5 +11,5 @@ Tools
 
 # Note
 
-AWS Amplify(ขอย่อว่า Amplify) คือ Framework and hosting service ที่ใช้ในการพัฒนาแอปพลิเคชันมือถือและเว็บแอปพลิเคชัน (SPA (Single Page Application)) โดยผ่านการใช้งาน AWS
+AWS Amplify คือ Framework and hosting service ที่ใช้ในการพัฒนาแอปพลิเคชันมือถือและเว็บแอปพลิเคชัน (SPA (Single Page Application)) โดยผ่านการใช้งาน AWS
 เมื่อใช้ Amplify ทำให้ไม่จำเป็นต้องสร้าง CI / CD pipeline ของการ Build หรือ Deploy
